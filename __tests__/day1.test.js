@@ -18,4 +18,16 @@ describe('Day 1', () => {
       expect(day1.calculateFrequency(changes)).toBe(454);
     });
   });
+
+  describe('Part 2', () => {
+    it('For frequency changes +1 -1 first frequency the device reaches twice is 0', () => {
+      expect(day1.frequencyRepeated([1, -1])).toBe(0);
+    });
+    it('For frequency changes +3 +3 +4 -2 -4 first frequency the device reaches twice is 10', () => {
+      expect(day1.frequencyRepeated([3, 3, 4, -2, -4])).toBe(10);
+    });
+    it('For frequency changes -6 +3 +8 +5 -6 first frequency the device reaches twice is 10', () => {
+      expect(day1.frequencyRepeated([-6, 3, 8, 5, -6])).toBe(5);
+    });
+  });
 });

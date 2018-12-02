@@ -11,19 +11,19 @@ const day2 = {
     }
     return foundValues;
   },
-  // containsNtimes(times, id) {
-  //   const symbols = Object.keys(foundValues);
-  //   const symbolsLength = symbols.length;
-  //   let foundNtimes = false;
-  //   let j = 0;
-  //   while (!foundNtimes && j < symbolsLength) {
-  //     if (foundValues[symbolsLength[j]] === times) {
-  //       foundNtimes = true;
-  //     }
-  //     j++;
-  //   }
-  //   return foundNtimes;
-  // }
+  containsNtimes(times, symbolOccurences) {
+    const symbols = Object.keys(symbolOccurences);
+    const length = symbols.length;
+    let foundNtimes = false;
+    let i = 0;
+    while (!foundNtimes && i < length) {
+      if (symbolOccurences[symbols[i]] === times) {
+        foundNtimes = true;
+      }
+      i++;
+    }
+    return foundNtimes;
+  }
 };
 
 module.exports = day2;

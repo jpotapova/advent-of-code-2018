@@ -8,18 +8,18 @@ describe('Day 2', () => {
     it('bababc symbol occurences are {a: 2, b: 3, c: 1}', () => {
       expect(day2.symbolOccurences('bababc')).toEqual({a: 2, b: 3, c: 1});
     });
-    // it('abcdef contains no letters that appear exactly 3 times', () => {
-    //   expect(day2.containsNtimes(2, 'abcdef')).toBe(false);
-    // });
-    // it('abcdef contains no letters that appear exactly 3 times', () => {
-    //   expect(day2.containsNtimes(3, 'abcdef')).toBe(false);
-    // });
-    // it('bababc contains 2 a', () => {
-    //   expect(day2.containsNtimes(2, 'bababc')).toBe(true);
-    // });
-    // it('bababc contains 3 b', () => {
-    //   expect(day2.containsNtimes(3, 'bababc')).toBe(true);
-    // });
+    it('abcdef contains no letters that appear exactly 3 times', () => {
+      expect(day2.containsNtimes(2, day2.symbolOccurences('abcdef'))).toBe(false);
+    });
+    it('abcdef contains no letters that appear exactly 3 times', () => {
+      expect(day2.containsNtimes(3, day2.symbolOccurences('abcdef'))).toBe(false);
+    });
+    it('bababc contains 2 a', () => {
+      expect(day2.containsNtimes(2, day2.symbolOccurences('bababc'))).toBe(true);
+    });
+    it('bababc contains 3 b', () => {
+      expect(day2.containsNtimes(3, day2.symbolOccurences('bababc'))).toBe(true);
+    });
   });
 
 

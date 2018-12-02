@@ -28,9 +28,8 @@ describe('Day 1', () => {
   describe('Part 1 and Part 2 real data', () => {
     let changes;
     beforeAll(() => {
-      const fs = require('fs');
-      const contents = fs.readFileSync('__tests__/day1-input.txt', 'utf8');
-      changes = contents.split(/\r?\n/).map((change) => parseInt(change, 10));
+      const inputReader = require('./input-reader');
+      changes = inputReader('1').map((change) => parseInt(change, 10));
     });
 
     it('Frequency changes listed in the file result in 454', () => {

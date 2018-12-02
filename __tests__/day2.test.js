@@ -49,4 +49,9 @@ describe('Day 2', () => {
       expect(day2.checksum(ids)).toBe(8715);
     });
   });
+  describe('Part 2 example cases', () => {
+    it('abcde and axcye differ by 2 symbols', () => {
+      expect(day2.checksum(ids)).toBe(8715);
+    });
+  });
 });

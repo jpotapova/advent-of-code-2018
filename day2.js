@@ -29,6 +29,29 @@ const day2 = {
     const n2 = symbolOccurences.reduce((counter, sO) => counter + this.containsNtimes(2, sO), 0);
     const n3 = symbolOccurences.reduce((counter, sO) => counter + this.containsNtimes(3, sO), 0);
     return n2 * n3;
+  },
+  sameLetters(ids) {
+    const length = ids.length;
+    let samePart = '';
+    let i = -1;
+    let s, shortenedIds, occurences;
+    while (!samePart && i < length) {
+      i++;
+      shortenedIds = ids.map(id => id.slice(0, i) + id.slice(i+1, id.length));
+      s = new Set(shortenedIds);
+      if (s.size < length) {
+        occurences = day2.symbolOccurences(shortenedIds);
+        samePart = Object.keys(occurences).reduce((a, v) => {
+          if (occurences[v] > 1) {
+            a = v;
+          } else {
+            a = a;
+          }
+          return a;
+        }, '');
+      }
+    }
+    return samePart;
   }
 };
 

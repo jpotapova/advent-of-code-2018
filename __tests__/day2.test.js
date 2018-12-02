@@ -39,4 +39,14 @@ describe('Day 2', () => {
       });
     });
   });
+  describe('Part 1 real input', () => {
+    let ids;
+    beforeAll(() => {
+      const inputReader = require('./input-reader');
+      ids = inputReader('2');
+    });
+    it('Checksum is 8715', () => {
+      expect(day2.checksum(ids)).toBe(8715);
+    });
+  });
 });

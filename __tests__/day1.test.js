@@ -32,7 +32,7 @@ describe('Day 1', () => {
       changes = inputReader('1').map((change) => parseInt(change, 10));
     });
 
-    it('Frequency changes listed in the file result in 454', () => {
+    it('Frequency changes listed in the file result is 454', () => {
       expect(day1.calculateFrequency(changes)).toBe(454);
     });
 

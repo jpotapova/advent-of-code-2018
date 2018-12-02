@@ -14,15 +14,21 @@ const day2 = {
   containsNtimes(times, symbolOccurences) {
     const symbols = Object.keys(symbolOccurences);
     const length = symbols.length;
-    let foundNtimes = false;
+    let foundNtimes = 0;
     let i = 0;
     while (!foundNtimes && i < length) {
       if (symbolOccurences[symbols[i]] === times) {
-        foundNtimes = true;
+        foundNtimes = 1;
       }
       i++;
     }
     return foundNtimes;
+  },
+  checksum(ids) {
+    const symbolOccurences = ids.map((id) => this.symbolOccurences(id));
+    const n2 = symbolOccurences.reduce((counter, sO) => counter + this.containsNtimes(2, sO), 0);
+    const n3 = symbolOccurences.reduce((counter, sO) => counter + this.containsNtimes(3, sO), 0);
+    return n2 * n3;
   }
 };
 

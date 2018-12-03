@@ -24,14 +24,15 @@ const day3 = {
       top: furthest.map((point) => point.top).sort((a, b) => b - a)[0]
     };
   },
-  overlapsMatrix(claims) {
-    const size = this.fabricSize(claims);
-    const fabric = new Array(size.left+1).fill(0).map(() => new Array(size.top+1).fill(0));
-    const claimsData = claims.map((claim) => {
+  claimsToData(claims) {
+    return claims.map((claim) => {
       let claimData = this.processClaim(claim);
       claimData.furthest = this.furthest(claimData);
       return claimData;
     });
+  },
+  overlapsMatrix(claimsData, size) {
+    const fabric = new Array(size.left+1).fill(0).map(() => new Array(size.top+1).fill(0));
     claimsData.forEach((claim) => {
       for (let l = claim.left; l < claim.furthest.left; l++) {
         for (let t = claim.top; t < claim.furthest.top; t++) {
@@ -39,19 +40,22 @@ const day3 = {
         }
       }
     });
-    return [fabric, size];
+    return fabric;
   },
   overlapsCount(claims) {
-    let fabric, size;
-    [fabric, size] = this.overlapsMatrix(claims);
+    const size = this.fabricSize(claims);
+    const claimsData = this.claimsToData(claims);
+    let fabric = this.overlapsMatrix(claimsData, size);
     let overlaps = 0;
     for (let l = 0; l < size.left+1; l++) {
       for (let t = 0; t < size.top+1; t++) {
         if (fabric[l][t] > 1) overlaps++;
       }
     }
-
     return overlaps;
+  },
+  intactClaim() {
+
   }
 };
 

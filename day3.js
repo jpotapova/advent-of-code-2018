@@ -24,7 +24,7 @@ const day3 = {
       top: furthest.map((point) => point.top).sort((a, b) => b - a)[0]
     };
   },
-  overlapsCount(claims) {
+  overlapsMatrix(claims) {
     const size = this.fabricSize(claims);
     const fabric = new Array(size.left+1).fill(0).map(() => new Array(size.top+1).fill(0));
     const claimsData = claims.map((claim) => {
@@ -39,7 +39,11 @@ const day3 = {
         }
       }
     });
-
+    return [fabric, size];
+  },
+  overlapsCount(claims) {
+    let fabric, size;
+    [fabric, size] = this.overlapsMatrix(claims);
     let overlaps = 0;
     for (let l = 0; l < size.left+1; l++) {
       for (let t = 0; t < size.top+1; t++) {

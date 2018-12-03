@@ -39,7 +39,13 @@ describe('Day 2', () => {
       });
     });
   });
-  describe('Part 1 real input', () => {
+  describe('Part 2 example cases', () => {
+    let ids = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'];
+    it("For ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'] input common letters are fgij", () => {
+      expect(day2.sameLetters(ids)).toBe('fgij');
+    });
+  });
+  describe('Real input', () => {
     let ids;
     beforeAll(() => {
       const inputReader = require('./input-reader');
@@ -48,11 +54,9 @@ describe('Day 2', () => {
     it('Checksum is 8715', () => {
       expect(day2.checksum(ids)).toBe(8715);
     });
+    it('Same part is', () => {
+      expect(day2.sameLetters(ids)).toBe('fvstwblgqkhpuixdrnevmaycd');
+    })
   });
-  describe('Part 2 example cases', () => {
-    let ids = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'];
-    it("For ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'] input common letters are fgij", () => {
-      expect(day2.sameLetters(ids)).toBe('fgij');
-    });
-  });
+
 });

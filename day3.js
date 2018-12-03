@@ -16,6 +16,13 @@ const day3 = {
       left: claim.left + claim.width,
       top: claim.top + claim.height
     };
+  },
+  fabricSize(claims) {
+    const furthest = claims.map((claim) => this.furthest(this.processClaim(claim)));
+    return {
+      left: furthest.map((point) => point.left).sort((a, b) => b - a)[0],
+      top: furthest.map((point) => point.top).sort((a, b) => b - a)[0]
+    };
   }
 };
 

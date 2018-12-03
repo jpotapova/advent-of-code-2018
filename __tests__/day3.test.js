@@ -30,8 +30,18 @@ describe('Day 3', () => {
     });
     describe('Overlapping claims', () => {
       it('for [ #1 @ 1,3: 4x4, #2 @ 3,1: 4x4, #3 @ 5,5: 2x2]', () => {
-        expect(day3.overlappingClaims(claims)).toEqual(4);
+        expect(day3.overlapsCount(claims)).toEqual(4);
       });
+    });
+  });
+  describe('Real input', () => {
+    let claims;
+    beforeAll(() => {
+      const inputReader = require('./input-reader');
+      claims = inputReader('3');
+    });
+    it('Overlaps count', () => {
+      expect(day3.overlapsCount(claims)).toBe(105071);
     });
   });
 });

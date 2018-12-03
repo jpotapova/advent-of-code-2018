@@ -10,6 +10,12 @@ const day3 = {
       width: parseInt(width, 10),
       height: parseInt(height, 10)
     };
+  },
+  furthest(claim) {
+    return {
+      left: claim.left + claim.width,
+      top: claim.top + claim.height
+    };
   }
 };
 

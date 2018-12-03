@@ -23,6 +23,31 @@ const day3 = {
       left: furthest.map((point) => point.left).sort((a, b) => b - a)[0],
       top: furthest.map((point) => point.top).sort((a, b) => b - a)[0]
     };
+  },
+  overlappingClaims(claims) {
+    const size = this.fabricSize(claims);
+    const fabric = new Array(size.left+1).fill(0).map(() => new Array(size.top+1).fill(0));
+    const claimsData = claims.map((claim) => {
+      let claimData = this.processClaim(claim);
+      claimData.furthest = this.furthest(claimData);
+      return claimData;
+    });
+    claimsData.forEach((claim) => {
+      for (let l = claim.left; l < claim.furthest.left; l++) {
+        for (let t = claim.top; t < claim.furthest.top; t++) {
+          fabric[l][t]++;
+        }
+      }
+    });
+
+    let overlaps = 0;
+    for (let l = 1; l < size.left+1; l++) {
+      for (let t = 1; t < size.top+1; t++) {
+        if (fabric[l][t] > 1) overlaps++;
+      }
+    }
+
+    return overlaps;
   }
 };
 

@@ -28,5 +28,10 @@ describe('Day 3', () => {
         expect(day3.fabricSize(claims)).toEqual({left: 7, top: 7});
       });
     });
+    describe('Overlapping claims', () => {
+      it('for [ #1 @ 1,3: 4x4, #2 @ 3,1: 4x4, #3 @ 5,5: 2x2]', () => {
+        expect(day3.overlappingClaims(claims)).toEqual(4);
+      });
+    });
   });
 });

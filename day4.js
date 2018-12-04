@@ -81,6 +81,29 @@ const day4 = {
         }
     }
     return parseInt(sleepyGuard, 10);
+  },
+  bestMinute(minutes) {
+    const length = minutes.length;
+    const foundValues = {};
+    for (let i = 0; i < length; i++) {
+      if (minutes[i] in foundValues) {
+        foundValues[minutes[i]]++
+      } else {
+        foundValues[minutes[i]] = 1;
+      }
+    }
+
+    let max = 0;
+    let frequentMin = -1;
+    for (var m in foundValues) {
+      if (foundValues.hasOwnProperty(m)) {
+        if (foundValues[m] > max) {
+          max = foundValues[m];
+          frequentMin = m;
+        }
+      }
+    }
+    return parseInt(frequentMin, 10);
   }
 };
 

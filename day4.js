@@ -82,7 +82,7 @@ const day4 = {
     }
     return parseInt(sleepyGuard, 10);
   },
-  bestMinute(minutes) {
+  minFrequencies(minutes) {
     const length = minutes.length;
     const foundValues = {};
     for (let i = 0; i < length; i++) {
@@ -92,6 +92,10 @@ const day4 = {
         foundValues[minutes[i]] = 1;
       }
     }
+    return foundValues;
+  },
+  bestMinute(minutes) {
+    const foundValues = this.minFrequencies(minutes);
 
     let max = 0;
     let frequentMin = -1;
@@ -111,6 +115,36 @@ const day4 = {
     const guard = this.sleepyGuard(mins);
     const m = this.bestMinute(mins[guard]);
     return guard * m;
+  },
+  calcFrequency(arr, val) {
+    const l = arr.length;
+    let count = 0;
+    for (let i = 0; i < l; i++) {
+      if (arr[i] === val) count++;
+    }
+    return count;
+  },
+  bestMinute2(mins) {
+    const bestMins = {};
+    for (var guard in mins) {
+      if (mins.hasOwnProperty(guard)) {
+        bestMins[guard] = this.bestMinute(mins[guard]);
+      }
+    }
+
+    let maxFrequency = 0;
+    let maxFrequencyGuard = 0;
+    for (var guard in bestMins) {
+      if (bestMins.hasOwnProperty(guard)) {
+        let minuteFrequency = this.calcFrequency(mins[guard], bestMins[guard]);
+        if ( minuteFrequency > maxFrequency) {
+          maxFrequency = minuteFrequency;
+          maxFrequencyGuard = guard;
+        }
+      }
+    }
+
+    return maxFrequencyGuard * bestMins[maxFrequencyGuard];
   }
 };
 

@@ -81,7 +81,14 @@ describe('Day 4', () => {
       expect(day4.solution(records)).toBe(240);
     });
   });
-  describe('Real input', () => {
+  describe('Part2 example case', () => {
+    const mins = {
+      10: [1, 1, 2, 3, 4, 5],
+      99: [45, 1, 2, 3, 45, 46, 44, 45]
+    };
+    expect(day4.bestMinute2(mins)).toBe(4455);
+  });
+  xdescribe('Real input', () => {
     let records;
     beforeAll(() => {
       const inputReader = require('./input-reader');

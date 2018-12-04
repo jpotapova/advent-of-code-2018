@@ -34,10 +34,10 @@ describe('Day 3', () => {
       });
     });
   });
-  xdescribe('Part 2 example case', () => {
+  describe('Part 2 example case', () => {
     describe('Intact claim data', () => {
       it('for [ #1 @ 1,3: 4x4, #2 @ 3,1: 4x4, #3 @ 5,5: 2x2]', () => {
-        expect(day3.intactClaim(day3.overlapsMatrix(claims))).toEqual({left: 5, top: 5, width: 2, height: 2});
+        expect(day3.intactClaim(claims)).toBe(3);
       });
     });
   });
@@ -49,6 +49,9 @@ describe('Day 3', () => {
     });
     it('Overlaps count', () => {
       expect(day3.overlapsCount(claims)).toBe(105071);
+    });
+    it('Intact claim', () => {
+      expect(day3.intactClaim(claims)).toBe(222);
     });
   });
 });

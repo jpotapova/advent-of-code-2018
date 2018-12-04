@@ -106,6 +106,7 @@ const day4 = {
     return parseInt(frequentMin, 10);
   },
   solution(records) {
+    records.sort();
     const mins = this.getAsleepMinutes(records);
     const guard = this.sleepyGuard(mins);
     const m = this.bestMinute(mins[guard]);

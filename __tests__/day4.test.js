@@ -81,4 +81,14 @@ describe('Day 4', () => {
       expect(day4.solution(records)).toBe(240);
     });
   });
+  describe('Real input', () => {
+    let records;
+    beforeAll(() => {
+      const inputReader = require('./input-reader');
+      records = inputReader('4');
+    });
+    it('Multiplication', () => {
+      expect(day4.solution(records)).toBe(19830);
+    });
+  });
 });

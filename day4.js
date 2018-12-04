@@ -68,7 +68,7 @@ const day4 = {
     }
     return mins;
   },
-  sleepy(minutes) {
+  sleepyGuard(minutes) {
     let max = 0;
     let sleepyGuard = -1;
     for (var guard in minutes) {
@@ -104,6 +104,12 @@ const day4 = {
       }
     }
     return parseInt(frequentMin, 10);
+  },
+  solution(records) {
+    const mins = this.getAsleepMinutes(records);
+    const guard = this.sleepyGuard(mins);
+    const m = this.bestMinute(mins[guard]);
+    return guard * m;
   }
 };
 

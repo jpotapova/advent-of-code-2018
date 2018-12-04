@@ -72,10 +72,13 @@ describe('Day 4', () => {
       expect(day4.getAsleepMinutes(recordsFew)).toEqual(minutes);
     });
     it('Find most sleepy guard', () => {
-      expect(day4.sleepy(minutes)).toBe(10);
+      expect(day4.sleepyGuard(minutes)).toBe(10);
     });
     it('Find the best minute', () => {
       expect(day4.bestMinute([5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 5])).toBe(5);
+    });
+    it('Find the solution', () => {
+      expect(day4.solution(records)).toBe(240);
     });
   });
 });

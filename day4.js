@@ -145,6 +145,11 @@ const day4 = {
     }
 
     return maxFrequencyGuard * bestMins[maxFrequencyGuard];
+  },
+  solution2(records) {
+    records.sort();
+    const mins = this.getAsleepMinutes(records);
+    return this.bestMinute2(mins);
   }
 };
 

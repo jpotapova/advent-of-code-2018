@@ -88,7 +88,7 @@ describe('Day 4', () => {
     };
     expect(day4.bestMinute2(mins)).toBe(4455);
   });
-  xdescribe('Real input', () => {
+  describe('Real input', () => {
     let records;
     beforeAll(() => {
       const inputReader = require('./input-reader');
@@ -96,6 +96,9 @@ describe('Day 4', () => {
     });
     it('Multiplication', () => {
       expect(day4.solution(records)).toBe(19830);
+    });
+    it('Multiplication2', () => {
+      expect(day4.solution2(records)).toBe(43695);
     });
   });
 });

@@ -67,6 +67,20 @@ const day4 = {
       }
     }
     return mins;
+  },
+  sleepy(minutes) {
+    let max = 0;
+    let sleepyGuard = -1;
+    for (var guard in minutes) {
+        if (minutes.hasOwnProperty(guard)) {
+          let l = minutes[guard].length;
+            if (l > max) {
+              max = l;
+              sleepyGuard = guard;
+            }
+        }
+    }
+    return parseInt(sleepyGuard, 10);
   }
 };
 

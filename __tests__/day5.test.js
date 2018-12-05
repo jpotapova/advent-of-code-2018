@@ -16,16 +16,20 @@ describe('Day 5', () => {
     xit('process the real polymer', () => {
       const inputReader = require('./input-reader');
       let polymer = inputReader('5')[0];
-      console.log(polymer);
       expect(day5.part1(polymer)).toBe(9078);
     });
   });
-  describe('part 2', () => {
+  xdescribe('part 2', () => {
     it('remove unit and stabilise', () => {
       expect(day5.modifyPolymer('dabAcCaCBAcCcaDA', 'a')).toBe(6);
     });
     it('find shortest polymer', () => {
       expect(day5.shortest('dabAcCaCBAcCcaDA')).toBe(4);
+    });
+    it('find shortest for the real polymer', () => {
+      const inputReader = require('./input-reader');
+      let polymer = inputReader('5')[0];
+      expect(day5.shortest(polymer)).toBe(5698);
     });
   });
 

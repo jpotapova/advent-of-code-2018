@@ -11,6 +11,13 @@ describe('Day 5', () => {
     });
     it('process the polymer until stabilisation', () => {
       expect(day5.stabilise('dabAcCaCBAcCcaDA')).toEqual('dabCBAcaDA');
+      expect(day5.part1('dabAcCaCBAcCcaDA')).toBe(10);
+    });
+    xit('process the real polymer', () => {
+      const inputReader = require('./input-reader');
+      let polymer = inputReader('5')[0];
+      console.log(polymer);
+      expect(day5.part1(polymer)).toBe(9078);
     });
   });
 

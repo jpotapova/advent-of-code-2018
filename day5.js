@@ -27,6 +27,9 @@ const day5 = {
       }
     }
     return polymer;
+  },
+  part1(polymer) {
+    return this.stabilise(polymer).length;
   }
 };
 

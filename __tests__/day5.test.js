@@ -20,5 +20,13 @@ describe('Day 5', () => {
       expect(day5.part1(polymer)).toBe(9078);
     });
   });
+  describe('part 2', () => {
+    it('remove unit and stabilise', () => {
+      expect(day5.modifyPolymer('dabAcCaCBAcCcaDA', 'a')).toBe(6);
+    });
+    it('find shortest polymer', () => {
+      expect(day5.shortest('dabAcCaCBAcCcaDA')).toBe(4);
+    });
+  });
 
 });

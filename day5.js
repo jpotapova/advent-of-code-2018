@@ -30,6 +30,21 @@ const day5 = {
   },
   part1(polymer) {
     return this.stabilise(polymer).length;
+  },
+  modifyPolymer(polymer, unit) {
+    polymer = polymer.replace(new RegExp(unit, 'g'), '');
+    polymer = polymer.replace(new RegExp(unit.toUpperCase(), 'g'), '');
+    return this.part1(polymer);
+  },
+  shortest(polymer) {
+    const units = "abcdefghijklmnopqrstuvwxyz";
+    const length = units.length;
+    let polymers = [];
+    for (let i = 0; i < length; i++) {
+      polymers.push(this.modifyPolymer(polymer, units[i]));
+    }
+    polymers.sort((a, b) => a - b);
+    return polymers[0];
   }
 };
 

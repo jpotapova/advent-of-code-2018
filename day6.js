@@ -96,7 +96,8 @@ const day6 = {
       return accumulator;
     }, 0);
   },
-  maxFinite(coords) {
+  maxFinite(input) {
+    const coords = this.inputToCoords(input);
     const closestPoints = this.internal(coords);
     const candidates = this.candidates(coords);
     return candidates.map((candidate) => this.occurences(closestPoints, candidate)).sort((a, b) => b - a)[0];

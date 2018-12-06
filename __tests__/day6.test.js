@@ -34,7 +34,7 @@ describe('Day 6', () => {
     2, 2, 2, 2, 2, 2, 2,
     5, 5, 5, 5, 5, 5, 5,
   ];
-  describe('part 1', () => {
+  xdescribe('part 1', () => {
     it('process input to coords', () => {
       expect(day6.inputToCoords(input)).toEqual(coords);
     });
@@ -68,8 +68,15 @@ describe('Day 6', () => {
       expect(day6.occurences(internal, 4)).toBe(17);
     });
     it('calculate biggest finite area size', () => {
-      expect(day6.maxFinite(coords)).toBe(17);
+      expect(day6.maxFinite(input)).toBe(17);
     });
+
+  });
+  it('calculate biggest finite area for the real input', () => {
+    const inputReader = require('./input-reader');
+    let coords = inputReader('6');
+    console.log(coords.length);
+    expect(day6.maxFinite(coords)).toBe(4215);
   });
 
 });

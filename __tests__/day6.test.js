@@ -18,6 +18,22 @@ describe('Day 6', () => {
     {x: 8, y: 9}, // 5
   ];
   const distances = [0, 5, 9, 5, 8, 15];
+  const internal = [
+    -1, -1, -1, -1,
+    0,
+    1, 1, 1,
+    2, 2, 2, 2, 2,
+    3, 3, 3, 3, 3, 3, 3, 3, 3,
+    4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+    5, 5, 5,
+  ];
+  const borders = [
+    -1, -1, -1, -1,
+    0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 1, 1,
+    2, 2, 2, 2, 2, 2, 2,
+    5, 5, 5, 5, 5, 5, 5,
+  ];
   describe('part 1', () => {
     it('process input to coords', () => {
       expect(day6.inputToCoords(input)).toEqual(coords);
@@ -39,15 +55,21 @@ describe('Day 6', () => {
       expect(day6.closest(distances)).toBe(0);
     });
     it('calculate distance for each border coord', () => {
-      const borders = [
-        -1, -1, -1, -1,
-        0, 0, 0, 0, 0, 0,
-        1, 1, 1, 1, 1, 1,
-        2, 2, 2, 2, 2, 2, 2,
-        5, 5, 5, 5, 5, 5, 5,
-      ];
       expect(day6.borders(coords).sort((a, b) => a - b)).toEqual(borders);
-    })
+    });
+    it('list potential coords', () => {
+      expect(day6.candidates(coords)).toEqual([3, 4]);
+    });
+    it('calculate closest for each internal point', () => {
+
+      expect(day6.internal(coords).sort((a, b) => a - b)).toEqual(internal);
+    });
+    it('calculate occurences', () => {
+      expect(day6.occurences(internal, 4)).toBe(17);
+    });
+    it('calculate biggest finite area size', () => {
+      expect(day6.maxFinite(coords)).toBe(17);
+    });
   });
 
 });

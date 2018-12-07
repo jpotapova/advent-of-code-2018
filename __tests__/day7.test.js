@@ -43,4 +43,9 @@ describe('Day 7', () => {
   it('sort steps', () => {
     expect(day7.sortSteps(input)).toEqual('CABDFE');
   });
+  it('sort real steps', () => {
+    const inputReader = require('./input-reader');
+    let input = inputReader('7');
+    expect(day7.sortSteps(input)).toEqual('OUGLTKDJVBRMIXSACWYPEQNHZF');
+  });
 });

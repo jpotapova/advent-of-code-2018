@@ -77,7 +77,7 @@ const day6 = {
               .filter((value) => !borders.includes(value));
   },
   internal(coords) {
-    const distances = [];
+    const closestPoints = [];
     const extremums = this.extremums(coords);
     let x;
     let y;
@@ -85,10 +85,10 @@ const day6 = {
     y = extremums.min.y + 1;
     for (x; x <= extremums.max.x - 1; x++) {
       for (y = extremums.min.y + 1; y <= extremums.max.y - 1; y++) {
-        distances.push(this.closest(this.allDistances(coords, {x, y})));
+        closestPoints.push(this.closest(this.allDistances(coords, {x, y})));
       }
     }
-    return distances;
+    return closestPoints;
   },
   occurences(list, val) {
     return list.reduce((accumulator, value) => {
@@ -101,6 +101,34 @@ const day6 = {
     const closestPoints = this.internal(coords);
     const candidates = this.candidates(coords);
     return candidates.map((candidate) => this.occurences(closestPoints, candidate)).sort((a, b) => b - a)[0];
+  },
+  totalDistance(coords, point) {
+    return this.allDistances(coords, point).reduce((sum, distance) => {
+      return sum + distance;
+    }, 0);
+  },
+  within(coords, point, max) {
+    return this.totalDistance(coords, point) < max;
+  },
+  regionSize(input, max) {
+    const coords = this.inputToCoords(input);
+    let size = 0;
+    let region = [];
+    const extremums = this.extremums(coords);
+    let x;
+    let y;
+    x = extremums.min.x - 200;
+    y = extremums.min.y - 200;
+    for (x; x <= extremums.max.x + 200; x++) {
+      for (y = extremums.min.y; y <= extremums.max.y + 200; y++) {
+        if (this.within(coords, {x, y}, max)) {
+          region.push({x, y});
+          size++;
+        }
+      }
+    }
+
+    return size;
   }
 };
 

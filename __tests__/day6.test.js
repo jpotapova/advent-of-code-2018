@@ -72,11 +72,29 @@ describe('Day 6', () => {
     });
 
   });
-  it('calculate biggest finite area for the real input', () => {
+  xit('calculate biggest finite area for the real input', () => {
     const inputReader = require('./input-reader');
     let coords = inputReader('6');
     console.log(coords.length);
     expect(day6.maxFinite(coords)).toBe(4215);
   });
+
+  describe('part 2', () => {
+    it ('total distance for point 4, 3 is 30', () => {
+      expect(day6.totalDistance(coords, {x: 4, y: 3})).toBe(30);
+    })
+    it('is within the region', () => {
+      expect(day6.within(coords, {x: 4, y: 3}, 32)).toBe(true);
+    })
+    it('calc region size', () => {
+      expect(day6.regionSize(input, 32)).toBe(16);
+    });
+    it('calc region size for the real input', () => {
+      const inputReader = require('./input-reader');
+      let ipunt = inputReader('6');
+      expect(day6.regionSize(ipunt, 10000)).toBe(40376);
+    });
+  });
+
 
 });

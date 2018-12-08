@@ -108,4 +108,12 @@ describe('Day 7', () => {
     expect(day7.iterate(state1, allPrereq, ['A', 'B', 'C', 'D', 'E', 'F'])).toEqual(state2);
     expect(day7.iterate(state2, allPrereq, ['A', 'B', 'C', 'D', 'E', 'F'])).toEqual(state3);
   });
+  it('example solution', () => {
+    expect(day7.total(input, 2, 0)).toBe(15);
+  });
+  it('real input solution', () => {
+    const inputReader = require('./input-reader');
+    let input = inputReader('7');
+    expect(day7.total(input, 5, 60)).toBe(929);
+  })
 });

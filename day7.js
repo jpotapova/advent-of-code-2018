@@ -80,7 +80,6 @@ const day7 = {
       if (newState.progress.hasOwnProperty(step)) {
         if (this.duration(step, base) === newState.progress[step]) {
           newState.done = newState.done + step;
-          console.log(newState);
           delete newState.progress[step];
           newState.workers = newState.workers.map((worker) => {
             if (worker === step) {
@@ -106,6 +105,23 @@ const day7 = {
       return worker;
     });
     return newState;
+  },
+  total(input, workers, base) {
+    let data = this.processInput(input);
+    let prereq = this.allPrerequisites(data);
+    let allSteps = this.allSteps(data);
+    let state = {
+      second: -1,
+      workers: new Array(workers).fill('.'),
+      done: '',
+      progress: {}
+    };
+    while(!this.areComplete(allSteps, state.done)) {
+      console.log(state);
+      state = this.iterate(state, prereq, allSteps, base);
+    }
+    return state.second;
+
   }
 
 };

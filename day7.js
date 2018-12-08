@@ -51,6 +51,61 @@ const day7 = {
     }
     return newSteps.join('');
 
+  },
+  duration(step, base) {
+    const steps = "abcdefghijklmnopqrstuvwxyz".toUpperCase();
+    return steps.indexOf(step) + base + 1;
+  },
+  areComplete(toBeDone, done) {
+    return toBeDone.length === done.length;
+  },
+  stepsAvailable(prereq, allSteps, doneSteps, progress) {
+    return allSteps.filter((step) => {
+      if (doneSteps.includes(step)) return false;
+      if (step in progress) return false;
+
+      let remaining =  prereq[step].filter((prereqStep) => {
+        return !doneSteps.includes(prereqStep);
+      });
+
+      return remaining.length === 0
+    });
+  },
+  iterate(state, prereq, allSteps, base = 0) {
+    const newState = {...state};
+    // increase second
+    newState.second++;
+    // check if anything is complete
+    for (var step in newState.progress) {
+      if (newState.progress.hasOwnProperty(step)) {
+        if (this.duration(step, base) === newState.progress[step]) {
+          newState.done = newState.done + step;
+          console.log(newState);
+          delete newState.progress[step];
+          newState.workers = newState.workers.map((worker) => {
+            if (worker === step) {
+              return '.'
+            } else {
+              return worker;
+            }
+          });
+        }
+      }
+    }
+    // assign steps to idle workers
+    newState.workers = newState.workers.map((worker) => {
+      if (worker === '.') { // worker is idle
+        let available = this.stepsAvailable(prereq, allSteps, newState.done, newState.progress);
+        if (available.length) { // there is available step
+          worker = available[0];
+          newState.progress[worker] = 1;
+        }
+      } else { // worker is not idle
+        newState.progress[worker]++;
+      }
+      return worker;
+    });
+    return newState;
   }
 
 };
